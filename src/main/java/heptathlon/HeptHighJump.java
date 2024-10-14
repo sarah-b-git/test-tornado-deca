@@ -3,7 +3,7 @@ package heptathlon;
 import common.CalcTrackAndField;
 import common.InputResult;
 
-public class HeptHightJump {
+public class HeptHighJump {
 
 	private int score;
 	private double A = 1.84523;
@@ -20,10 +20,10 @@ public class HeptHightJump {
 
 			try {
 				// Acceptable values in cm
-				if (distance < 75.7) {
+				if (distance < 0) {
 					System.out.println("Value too low");
 					distance = inputResult.enterResult();
-				} else if (distance > 270) {
+				} else if (distance > 300) {
 
 					System.out.println("Value too high");
 					distance = inputResult.enterResult();
