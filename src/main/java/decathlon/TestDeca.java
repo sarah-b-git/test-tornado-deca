@@ -16,7 +16,7 @@ import decathlon.DecaShotPut;
 public class TestDeca {
 
     @Test
-    public void testDeca100M() {
+    public void testDeca100M() throws InvalidResultException {
         Deca100M deca100M = new Deca100M();
         double runningTime = 10.0;
         int expectedScore = 1096;
@@ -25,7 +25,7 @@ public class TestDeca {
     }
 
     @Test
-    public void testDeca110MHurdles() {
+    public void testDeca110MHurdles() throws InvalidResultException {
         Deca110MHurdles deca110MHurdles = new Deca110MHurdles();
         double runningTime = 15.0;
         int expectedScore = 850;
@@ -34,7 +34,7 @@ public class TestDeca {
     }
 
     @Test
-    public void testDeca400M() {
+    public void testDeca400M() throws InvalidResultException {
         Deca400M deca400M = new Deca400M();
         double runningTime = 50.0;
         int expectedScore = 815;
@@ -43,7 +43,7 @@ public class TestDeca {
     }
 
     @Test
-    public void testDeca1500M() {
+    public void testDeca1500M() throws InvalidResultException {
         Deca1500M deca1500M = new Deca1500M();
         double runningTime = 240;
         int expectedScore = 953;
@@ -52,7 +52,7 @@ public class TestDeca {
     }
 
     @Test
-    public void testDecaLongJump() {
+    public void testDecaLongJump() throws InvalidResultException {
         DecaLongJump decaLongJump = new DecaLongJump();
         double distance = 700;
         int expectedScore = 814;
@@ -61,7 +61,7 @@ public class TestDeca {
     }
 
     @Test
-    public void testDecaShotPut() {
+    public void testDecaShotPut() throws InvalidResultException{
         DecaShotPut decaShotPut = new DecaShotPut();
         double distance = 15.0;
         int expectedScore = 790;
@@ -70,7 +70,7 @@ public class TestDeca {
     }
 
     @Test
-    public void testDecaDiscusThrow() {
+    public void testDecaDiscusThrow() throws InvalidResultException{
         DecaDiscusThrow decaDiscusThrow = new DecaDiscusThrow();
         double distance = 45.0;
         int expectedScore = 767;
@@ -79,7 +79,7 @@ public class TestDeca {
     }
 
     @Test
-    public void testDecaPoleVault() {
+    public void testDecaPoleVault()throws InvalidResultException {
         DecaPoleVault decaPoleVault = new DecaPoleVault();
         double height = 500;
         int expectedScore = 910;
@@ -88,7 +88,7 @@ public class TestDeca {
     }
 
     @Test
-    public void testDecaHighJump() {
+    public void testDecaHighJump() throws InvalidResultException {
         DecaHighJump decaHighJump = new DecaHighJump();
         double height = 200;
         int expectedScore = 803;
@@ -97,7 +97,7 @@ public class TestDeca {
     }
 
     @Test
-    public void testDecaJavelinThrow() {
+    public void testDecaJavelinThrow() throws InvalidResultException {
         DecaJavelinThrow decaJavelinThrow = new DecaJavelinThrow();
         double distance = 65.0;
         int expectedScore = 813;

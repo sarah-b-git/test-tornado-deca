@@ -1,5 +1,6 @@
 package heptathlon;
 
+import decathlon.InvalidResultException;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import heptathlon.Hep100MHurdles;
@@ -13,7 +14,7 @@ import heptathlon.HeptShotPut;
 public class TestHept {
 
     @Test
-    public void testHep100MHurdles() {
+    public void testHep100MHurdles() throws InvalidResultException {
         Hep100MHurdles hep100MHurdles = new Hep100MHurdles();
         double runningTime = 15.0;
         int expectedScore = 842;
@@ -22,7 +23,7 @@ public class TestHept {
     }
 
     @Test
-    public void testHep200M() {
+    public void testHep200M() throws InvalidResultException {
         Hep200M hep200M = new Hep200M();
         double runningTime = 25.0;
         int expectedScore = 887;
@@ -31,7 +32,7 @@ public class TestHept {
     }
 
     @Test
-    public void testHep800M() {
+    public void testHep800M() throws InvalidResultException{
         Hep800M hep800M = new Hep800M();
         double runningTime = 140.0;
         int expectedScore = 824;
@@ -40,7 +41,7 @@ public class TestHept {
     }
 
     @Test
-    public void testHepHighJump() {
+    public void testHepHighJump()throws InvalidResultException {
         HeptHighJump hepHighJump = new HeptHighJump();
         double height = 185.0;
         int expectedScore = 1041;
@@ -49,7 +50,7 @@ public class TestHept {
     }
 
     @Test
-    public void testHepLongJump() {
+    public void testHepLongJump() throws InvalidResultException {
         HeptLongJump hepLongJump = new HeptLongJump();
         double distance = 650;
         int expectedScore = 1007;
@@ -58,7 +59,7 @@ public class TestHept {
     }
 
     @Test
-    public void testHepShotPut() {
+    public void testHepShotPut()throws InvalidResultException {
         HeptShotPut hepShotPut = new HeptShotPut();
         double distance = 15.0;
         int expectedScore = 861;
@@ -67,7 +68,7 @@ public class TestHept {
     }
 
     @Test
-    public void testHepJavelinThrow() {
+    public void testHepJavelinThrow() throws InvalidResultException {
         HeptJavelinThrow hepJavelinThrow = new HeptJavelinThrow();
         double distance = 55.0;
         int expectedScore = 957;
