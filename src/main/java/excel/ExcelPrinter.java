@@ -49,7 +49,7 @@ public class ExcelPrinter {
 	}
 
 	public void write() throws IOException {
-		FileOutputStream out = new FileOutputStream("C:/Eclipse/resultat_" + excelName + ".xlsx");
+		FileOutputStream out = new FileOutputStream(excelName + ".xlsx");
 		workbook.write(out);
 		workbook.close();
 	}
