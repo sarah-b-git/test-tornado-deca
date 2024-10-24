@@ -15,57 +15,57 @@ public class Competitor {
     public void setScore(String discipline, int score) {
         switch (discipline) {
             // Decathlon Events
-            case "100m":
+            case "Deca 100m":
                 scores[0] = score;
                 break;
-            case "400m":
+            case "Deca 400m":
                 scores[1] = score;
                 break;
-            case "1500m":
+            case "Deca 1500m":
                 scores[2] = score;
                 break;
-            case "110m Hurdles":
+            case "Deca 110m Hurdles":
                 scores[3] = score;
                 break;
-            case "Long Jump":
+            case "Deca Long Jump":
                 scores[4] = score;
                 break;
-            case "High Jump":
+            case "Deca High Jump":
                 scores[5] = score;
                 break;
-            case "Pole Vault":
+            case "Deca Pole Vault":
                 scores[6] = score;
                 break;
-            case "Discus Throw":
+            case "Deca Discus Throw":
                 scores[7] = score;
                 break;
-            case "Javelin Throw":
+            case "Deca Javelin Throw":
                 scores[8] = score;
                 break;
-            case "Shot Put":
+            case "Deca Shot Put":
                 scores[9] = score;
                 break;
 
             // Heptathlon Events
-            case "100m Hurdles (Heptathlon)":
+            case "Hep 100m Hurdles":
                 scores[10] = score;
                 break;
-            case "200m (Heptathlon)":
+            case "Hep 200m":
                 scores[11] = score;
                 break;
-            case "800m (Heptathlon)":
+            case "Hep 800m":
                 scores[12] = score;
                 break;
-            case "High Jump (Heptathlon)":
+            case "Hep High Jump":
                 scores[13] = score;
                 break;
-            case "Long Jump (Heptathlon)":
+            case "Hep Long Jump":
                 scores[14] = score;
                 break;
-            case "Shot Put (Heptathlon)":
+            case "Hep Shot Put":
                 scores[15] = score;
                 break;
-            case "Javelin Throw (Heptathlon)":
+            case "Hep Javelin Throw":
                 scores[16] = score;
                 break;
         }
