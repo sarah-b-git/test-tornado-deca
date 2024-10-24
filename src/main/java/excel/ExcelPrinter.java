@@ -26,12 +26,24 @@ public class ExcelPrinter {
     public void add(Object[][] data, String sheetName) {
 
         XSSFSheet sheet = workbook.createSheet(sheetName);
+        String[] headers = {"Name", "Deca 100m", "Deca 400m", "Deca 1500m", "Deca 110m Hurdles",
+                "Deca Long Jump", "Deca High Jump", "Deca Pole Vault",
+                "Deca Discus Throw", "Deca Javelin Throw", "Deca Shot Put",
+                "Hep 200m", "Hep 800m", "Hep 100m Hurdles",
+                "Hep High Jump", "Hep Long Jump", "Hep Shot Put",
+                "Hep Javelin Throw", "Total Score"};
+        Row headerRow = sheet.createRow(0);
+        for (int i = 0; i < headers.length; i++) {
+            Cell cell = headerRow.createCell(i);
+            cell.setCellValue(headers[i]);
+        }
 
-        int rowCount = 0;
+        int rowCount = 1;
 
         for (Object[] aBook : data) {
             Row row = sheet.createRow(rowCount);
             rowCount++;
+
             int columnCount = 0;
 
             for (Object field : aBook) {
@@ -48,7 +60,9 @@ public class ExcelPrinter {
                     cell.setCellValue((Double) field);
 
                 }
+
             }
+
         }
     }
 
