@@ -67,9 +67,9 @@ public class ExcelPrinter {
     }
 
     public void write() throws IOException {
-        //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyMMdd_HHmmss");
-        //String timeStamp = LocalDateTime.now().format(formatter);
-        FileOutputStream out = new FileOutputStream(excelName + /*timeStamp +*/ ".xlsx");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyMMdd_HHmmss");
+        String timeStamp = LocalDateTime.now().format(formatter);
+        FileOutputStream out = new FileOutputStream(excelName + timeStamp + ".xlsx");
         workbook.write(out);
         workbook.close();
     }
