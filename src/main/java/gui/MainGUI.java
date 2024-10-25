@@ -69,6 +69,11 @@ public class MainGUI {
         exportButton.addActionListener(new ExportButtonListener());  // New export button listener
         panel.add(exportButton);  // Add export button to the panel
 
+        // Tooltips for input fields and buttons
+        nameField.setToolTipText("Enter a valid name for the competitor");
+        resultField.setToolTipText("Enter a valid result in numbers for the selected discipline");
+
+
         // Output area
         outputArea = new JTextArea(5, 40);
         outputArea.setEditable(false);
@@ -88,6 +93,11 @@ public class MainGUI {
 
             try {
                 double result = Double.parseDouble(resultText);
+
+                if (name.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Please enter a valid name for the competitor", "Invalid Name", JOptionPane.ERROR_MESSAGE);
+                    return; // Exit the method if name is empty or doesn't start with an uppercase letter
+                }
 
                 int score = 0;
                 switch (discipline) {
