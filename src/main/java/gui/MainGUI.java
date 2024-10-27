@@ -41,7 +41,7 @@ public class MainGUI {
 
         // Input for competitor's name
         nameField = new JTextField(20);
-        panel.add(new JLabel("Enter Competitor's Name:"));
+        panel.add(new JLabel("Enter Competitor's Name (max 40 competitors):"));
         panel.add(nameField);
 
         // Dropdown for selecting discipline
@@ -89,10 +89,10 @@ public class MainGUI {
             double result;
             if (competitors.size() < 2) {
                 competitors.add(competitor);
-            String discipline = (String) disciplineBox.getSelectedItem();
-            String resultText = resultField.getText();
+                String discipline = (String) disciplineBox.getSelectedItem();
+                String resultText = resultField.getText();
 
-            try {
+                try {
                     result = Double.parseDouble(resultText);
                     if (name.isEmpty()) {
                         JOptionPane.showMessageDialog(null, "Please enter a valid name for the competitor", "Invalid Name", JOptionPane.ERROR_MESSAGE);
@@ -167,24 +167,26 @@ public class MainGUI {
                             HeptJavelinThrow heptJavelinThrow = new HeptJavelinThrow();
                             yield heptJavelinThrow.calculateResult(result);
                         }
-                        default -> 0;};
+                        default -> 0;
+                    };
 
-                // Update the competitor's score for the selected discipline
-                competitor.setScore(discipline, score);
+                    // Update the competitor's score for the selected discipline
+                    competitor.setScore(discipline, score);
 
-                outputArea.append("Competitor: " + name + "\n");
-                outputArea.append("Discipline: " + discipline + "\n");
-                outputArea.append("Result: " + result + "\n");
-                outputArea.append("Score: " + score + "\n\n");
-            } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(null, "Please enter a valid number for the result.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
-            } catch (InvalidResultException ex) {
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Invalid Result", JOptionPane.ERROR_MESSAGE);
-            }
-        }else {
-                showMessageDialog(null, "Error. You can add only 40 competitors.");
+                    outputArea.append("Competitor: " + name + "\n");
+                    outputArea.append("Discipline: " + discipline + "\n");
+                    outputArea.append("Result: " + result + "\n");
+                    outputArea.append("Score: " + score + "\n\n");
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "Please enter a valid number for the result.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+                } catch (InvalidResultException ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Invalid Result", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                showMessageDialog(null, "Limit reached: You can only add up to 40 competitors.");
             }// Add to the list
-    }}
+        }
+    }
 
     private class ExportButtonListener implements ActionListener {
         @Override
