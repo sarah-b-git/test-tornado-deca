@@ -87,7 +87,7 @@ public class MainGUI {
             Competitor competitor = new Competitor(name);  // Create a new competitor
             int score;
             double result;
-            if (competitors.size() < 2) {
+            if (competitors.size() < 40) {
                 competitors.add(competitor);
                 String discipline = (String) disciplineBox.getSelectedItem();
                 String resultText = resultField.getText();
