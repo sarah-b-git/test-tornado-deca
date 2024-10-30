@@ -1,4 +1,4 @@
-package heptathlon;
+package test;
 
 import decathlon.InvalidResultException;
 import org.junit.jupiter.api.Test;

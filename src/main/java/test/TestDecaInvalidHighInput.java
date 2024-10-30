@@ -1,5 +1,6 @@
-package decathlon;
+package test;
 
+import decathlon.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

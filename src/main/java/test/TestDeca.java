@@ -1,17 +1,11 @@
-package decathlon;
+package test;
 
+import decathlon.*;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
-import decathlon.Deca100M;
-import decathlon.DecaDiscusThrow;
-import decathlon.DecaJavelinThrow;
-import decathlon.DecaLongJump;
-import decathlon.DecaPoleVault;
-import decathlon.Deca110MHurdles;
-import decathlon.Deca400M;
-import decathlon.Deca1500M;
-import decathlon.DecaHighJump;
-import decathlon.DecaShotPut;
+
+import javax.swing.*;
 
 public class TestDeca {
 
@@ -61,7 +55,7 @@ public class TestDeca {
     }
 
     @Test
-    public void testDecaShotPut() throws InvalidResultException{
+    public void testDecaShotPut() throws InvalidResultException {
         DecaShotPut decaShotPut = new DecaShotPut();
         double distance = 15.0;
         int expectedScore = 790;
@@ -70,7 +64,7 @@ public class TestDeca {
     }
 
     @Test
-    public void testDecaDiscusThrow() throws InvalidResultException{
+    public void testDecaDiscusThrow() throws InvalidResultException {
         DecaDiscusThrow decaDiscusThrow = new DecaDiscusThrow();
         double distance = 45.0;
         int expectedScore = 767;
@@ -79,7 +73,7 @@ public class TestDeca {
     }
 
     @Test
-    public void testDecaPoleVault()throws InvalidResultException {
+    public void testDecaPoleVault() throws InvalidResultException {
         DecaPoleVault decaPoleVault = new DecaPoleVault();
         double height = 500;
         int expectedScore = 910;
