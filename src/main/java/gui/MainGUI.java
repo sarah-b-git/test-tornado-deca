@@ -2,6 +2,7 @@ package gui;
 
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -26,6 +27,8 @@ public class MainGUI {
     private JComboBox<String> disciplineBox;
     private JTextArea outputArea;
 
+    private JTable competitorTable;
+    private DefaultTableModel tableModel;
     private ArrayList<Competitor> competitors = new ArrayList<>();
 
     public static void main(String[] args) {
@@ -35,8 +38,9 @@ public class MainGUI {
     private void createAndShowGUI() {
         JFrame frame = new JFrame("Track and Field Calculator");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(500, 400);
-
+        frame.setSize(1000, 800);
+        JPanel topPanel = new JPanel();
+        topPanel.setLayout(new BorderLayout());
         JPanel panel = new JPanel(new GridLayout(6, 1));
 
         // Input for competitor's name
@@ -75,7 +79,20 @@ public class MainGUI {
         JScrollPane scrollPane = new JScrollPane(outputArea);
         panel.add(scrollPane);
 
-        frame.add(panel);
+        String[] columnNames = {"Name", "100m", "400m", "1500m", "110m Hurdles",
+                "Long Jump", "High Jump", "Pole Vault",
+                "Discus Throw", "Javelin Throw", "Shot Put",
+                "Hep 100M Hurdles", "Hep 200M", "Hep 800M", "Hep High Jump",
+                "Hep Javelin Throw", "Hep Long Jump", "Hep Shot Put", "Total Score"};
+
+        tableModel = new DefaultTableModel(columnNames, 0);
+        competitorTable = new JTable(tableModel);
+        JScrollPane tableScrollPane = new JScrollPane(competitorTable);
+        tableScrollPane.setPreferredSize(new Dimension(750, 200));
+
+        frame.setLayout(new BorderLayout());
+        frame.add(panel, BorderLayout.CENTER);  // Top panel with inputs
+        frame.add(tableScrollPane, BorderLayout.SOUTH);
         frame.setVisible(true);
     }
 
@@ -84,11 +101,15 @@ public class MainGUI {
         public void actionPerformed(ActionEvent e) {
 
             String name = nameField.getText();
-            Competitor competitor = new Competitor(name);  // Create a new competitor
+            Competitor competitor = findCompetitorByName(name);
+            if (competitor == null) {
+                competitor = new Competitor(name);  // Create a new competitor
+                competitors.add(competitor);
+            }
             int score;
             double result;
             if (competitors.size() < 40) {
-                competitors.add(competitor);
+
                 String discipline = (String) disciplineBox.getSelectedItem();
                 String resultText = resultField.getText();
 
@@ -170,6 +191,7 @@ public class MainGUI {
                         default -> 0;
                     };
 
+
                     // Update the competitor's score for the selected discipline
                     competitor.setScore(discipline, score);
 
@@ -177,6 +199,7 @@ public class MainGUI {
                     outputArea.append("Discipline: " + discipline + "\n");
                     outputArea.append("Result: " + result + "\n");
                     outputArea.append("Score: " + score + "\n\n");
+                    tableModel.addRow(competitor.getRowData());
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Please enter a valid number for the result.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
                 } catch (InvalidResultException ex) {
@@ -220,4 +243,14 @@ public class MainGUI {
         printer.add(data, "Results");
         printer.write();
     }
+
+    private Competitor findCompetitorByName(String name) {
+        for (Competitor competitor : competitors) {
+            if (competitor.getName().equalsIgnoreCase(name)) {
+                return competitor;
+            }
+        }
+        return null;  // If not found, return null
+    }
+
 }
