@@ -101,15 +101,15 @@ public class MainGUI {
         public void actionPerformed(ActionEvent e) {
 
             String name = nameField.getText();
+            if (findCompetitorByName(name)!=null || competitors.size() < 3) {
             Competitor competitor = findCompetitorByName(name);
-            if (competitor == null) {
-                competitor = new Competitor(name);  // Create a new competitor
-                competitors.add(competitor);
-            }
-            int score;
-            double result;
-            if (competitors.size() < 40) {
 
+                if (competitor == null) {
+                    competitor = new Competitor(name);  // Create a new competitor
+                    competitors.add(competitor);
+                }
+                int score;
+                double result;
                 String discipline = (String) disciplineBox.getSelectedItem();
                 String resultText = resultField.getText();
 
@@ -119,6 +119,7 @@ public class MainGUI {
                         JOptionPane.showMessageDialog(null, "Please enter a valid name for the competitor", "Invalid Name", JOptionPane.ERROR_MESSAGE);
                         return; // Exit the method if name is empty or doesn't start with an uppercase letter
                     }
+
                     score = switch (discipline) {
                         case "Deca 100m" -> {
                             Deca100M deca100M = new Deca100M();
@@ -188,6 +189,7 @@ public class MainGUI {
                             HeptJavelinThrow heptJavelinThrow = new HeptJavelinThrow();
                             yield heptJavelinThrow.calculateResult(result);
                         }
+
                         default -> 0;
                     };
 
@@ -205,10 +207,9 @@ public class MainGUI {
                 } catch (InvalidResultException ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Invalid Result", JOptionPane.ERROR_MESSAGE);
                 }
-            } else {
-                showMessageDialog(null, "Limit reached: You can only add up to 40 competitors.");
-            }// Add to the list
-        }
+            }      else{       showMessageDialog(null, "Limit reached: You can only add up to 40 competitors.");
+            // Add to the list
+        }}
     }
 
     private class ExportButtonListener implements ActionListener {
@@ -224,6 +225,7 @@ public class MainGUI {
     }
 
     private void exportToExcel() throws IOException {
+        System.out.println(competitors.size());
         String[][] data = new String[competitors.size()][];
         int i = 0;
         for (Competitor competitor : competitors) {
